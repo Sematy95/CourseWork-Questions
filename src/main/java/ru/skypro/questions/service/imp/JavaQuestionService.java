@@ -10,6 +10,7 @@ import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
+
     private final Set<Question> questions = new HashSet<>();
     private final Random random = new Random();
 
@@ -18,7 +19,7 @@ public class JavaQuestionService implements QuestionService {
         Question questionGenerated = new Question(question, answer);
 
         if (questions.contains(questionGenerated)) {
-            throw new QuestionAlreadyExistException(questionGenerated.getQuestion(),questionGenerated.getAnswer());
+            throw new QuestionAlreadyExistException(questionGenerated.getQuestion(), questionGenerated.getAnswer());
         }
         questions.add(questionGenerated);
         return questionGenerated;
@@ -27,7 +28,7 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question add(Question question) {
         if (questions.contains(question)) {
-            throw new QuestionAlreadyExistException(question.getQuestion(),question.getAnswer());
+            throw new QuestionAlreadyExistException(question.getQuestion(), question.getAnswer());
         }
         questions.add(question);
         return question;
@@ -39,7 +40,7 @@ public class JavaQuestionService implements QuestionService {
         Question questionGenerated = new Question(question, answer);
 
         if (!questions.contains(questionGenerated)) {
-            throw new QuestionIsNotExistException(question,answer);
+            throw new QuestionIsNotExistException(question, answer);
         }
         questions.remove(questionGenerated);
         return questionGenerated;
